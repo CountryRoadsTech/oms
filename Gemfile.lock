@@ -72,6 +72,10 @@ GEM
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.2)
+    authtrail (0.4.3)
+      activerecord (>= 5.2)
+      railties (>= 5.2)
+      warden
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
@@ -123,6 +127,7 @@ GEM
     fugit (1.5.3)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
+    geocoder (1.8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
     good_job (3.3.2)
@@ -352,6 +357,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  authtrail
   bootsnap
   brakeman
   bullet
@@ -363,6 +369,7 @@ DEPENDENCIES
   faker
   foreman
   friendly_id
+  geocoder
   good_job
   image_processing (~> 1.2)
   jbuilder

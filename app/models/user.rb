@@ -32,9 +32,10 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
-# The user model is used for user authentication, and storing user information
 class User < ApplicationRecord
   # Include default devise modules. Others available are: :registerable, :omniauthable
   devise :database_authenticatable, :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
+
+  has_many :login_activities, as: :user, dependent: :nullify
 end

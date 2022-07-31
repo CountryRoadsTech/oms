@@ -68,6 +68,12 @@ gem 'paper_trail'
 # Use Devise to add user authentication
 gem 'devise'
 
+# Use Authtrail to track and store all login attempts
+gem 'authtrail'
+
+# Use Geocoder to look up the location of IP addresses
+gem 'geocoder'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
