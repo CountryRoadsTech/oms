@@ -54,6 +54,9 @@ gem "simple_form"
 # Use Pagy to paginate models in controllers and display pagination helpers in views
 gem "pagy"
 
+# Use Local Time to display dates and times in the user's local timezone
+gem "local_time"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
