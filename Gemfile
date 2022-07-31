@@ -57,6 +57,9 @@ gem "pagy"
 # Use Local Time to display dates and times in the user's local timezone
 gem "local_time"
 
+# Use Friendly ID to configure a different URL attribute for the slug other than ID
+gem "friendly_id"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]

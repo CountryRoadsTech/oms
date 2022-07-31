@@ -86,6 +86,8 @@ GEM
       tzinfo
     ffi (1.15.5)
     foreman (0.87.2)
+    friendly_id (5.4.2)
+      activerecord (>= 4.0.0)
     fugit (1.5.3)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
@@ -243,6 +245,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   foreman
+  friendly_id
   good_job
   image_processing (~> 1.2)
   jbuilder
