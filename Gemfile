@@ -59,4 +59,10 @@ group :development do
 
   # Automtically add a comment with the database schema to the top of relevant Rails files
   gem "annotate"
+
+  # Rails Mini Profiler adds a request performance dashboard
+  gem "rails_mini_profiler"
+
+  # Stack Prof is used by Rails Mini Profiler to store Flamegraphs
+  gem "stackprof"
 end
