@@ -1,0 +1,17 @@
+<ol>
+  <% breadcrumbs.each do |breadcrumb| %>
+   <li>
+    <% if breadcrumb.link? %>
+      <%= link_to breadcrumb.name, breadcrumb.url %>
+    <% else %>
+      <span>
+        <%= breadcrumb.name %>
+      </span>
+    <% end %>
+
+    <% unless breadcrumb == breadcrumbs.last %>
+      <span>/</span>
+    <% end %>
+   </li>
+  <% end %>
+</ol>
