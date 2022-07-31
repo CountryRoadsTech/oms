@@ -1,0 +1,40 @@
+name: Continuous Integration
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+
+    env:
+      POSTGRES_DATABASE: postgres
+      POSTGRES_HOST: localhost
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Setup test database
+        run: bundle exec rails db:prepare
+      - name: Run code style checks
+        run: bundle exec rubocop
+      - name: Run security static analysis
+        run: bundle exec brakeman
+      - name: Run tests
+        run: bundle exec rspec
