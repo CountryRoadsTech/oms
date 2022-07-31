@@ -2,6 +2,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     mount RailsMiniProfiler::Engine => 'requests' if Rails.env.development?
+    mount GoodJob::Engine => 'background_jobs'
   end
 
   # Defines the root path route ("/")
