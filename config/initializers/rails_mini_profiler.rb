@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Rails Mini Profiler Initializer (0.7.2)
 
 # Customize to your hearts content. If you remove this file, Rails Mini Profiler will use sensible defaults.
@@ -5,7 +7,7 @@
 if Rails.env.development?
   RailsMiniProfiler.configure do |config|
     # Customize when Rails Mini Profiler should run
-    config.enabled = proc { |env| Rails.env.development? }
+    config.enabled = proc { |_env| Rails.env.development? }
 
     # Configure Flamegraph generation
     config.flamegraph_enabled = true
