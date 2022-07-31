@@ -15,4 +15,7 @@ class ApplicationController < ActionController::Base
     def add_breadcrumb(name, url = nil)
       breadcrumbs << Breadcrumb.new(name, url)
     end
+
+    # Track and store which user (if signed in) performed each change to a model
+    before_action :set_paper_trail_whodunnit
 end
