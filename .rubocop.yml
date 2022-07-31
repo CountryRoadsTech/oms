@@ -1,0 +1,53 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-rake
+  - rubocop-performance
+
+AllCops:
+  NewCops: enable
+
+Style/SymbolArray:
+  EnforcedStyle: 'brackets'
+
+Style/WordArray:
+  EnforcedStyle: 'brackets'
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Style/InverseMethods:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: 'arguments'
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false

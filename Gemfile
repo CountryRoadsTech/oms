@@ -67,13 +67,40 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
-  # Use Foreman to launch both the yarn and rails server in development side-by-side
-  gem "foreman"
+  # Rubocop is used to enforce coding style through static analysis
+  gem 'rubocop', require: false
+  # Rubocop Rails adds Rails specific checks to Rubocop
+  gem 'rubocop-rails', require: false
+  # Rubocop RSpec adds RSpec test specific checks to Rubocop
+  gem 'rubocop-rspec', require: false
+  # Rubocop Rake adds Rake task specific checks to Rubocop
+  gem 'rubocop-rake', require: false
+  # Rubocop Performance adds performance specific checks to Rubocop
+  gem 'rubocop-performance', require: false
+
+  # Brakeman is used for static security analysis
+  gem 'brakeman'
+
+  # RSpec is used to replace the default testing framework
+  gem 'rspec-rails'
+  # Capybara is used to write integration/feature tests
+  gem 'capybara'
+  # Selenium Webdriver is used to simulate how a real user interacts with the web browser during testing
+  gem 'selenium-webdriver'
+  # Factory Bot is used to replace the default tests fixtures
+  gem 'factory_bot_rails'
+  # Shoulda Matchers adds many, common one-line RSpec test matchers
+  gem 'shoulda-matchers'
+  # Faker is used to generate pseudorandom test data
+  gem 'faker'
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Use Foreman to launch both the yarn and rails server in development side-by-side
+  gem "foreman"
 
   # Automtically add a comment with the database schema to the top of relevant Rails files
   gem "annotate"
@@ -83,4 +110,10 @@ group :development do
 
   # Stack Prof is used by Rails Mini Profiler to store Flamegraphs
   gem "stackprof"
+
+  # Bullet is used to detect N+1 database queries that should be optimized
+  gem 'bullet'
+
+  # Overcommit is used to run checks before each 'git commit' and 'git push'
+  gem 'overcommit'
 end
