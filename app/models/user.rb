@@ -38,4 +38,5 @@ class User < ApplicationRecord
          :confirmable, :lockable, :timeoutable, :trackable
 
   has_many :login_activities, as: :user, dependent: :nullify
+  has_many :requests, dependent: :nullify
 end

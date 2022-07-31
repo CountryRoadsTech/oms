@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_31_225147) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_31_230409) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -119,6 +119,41 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_225147) do
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user"
   end
 
+  create_table "requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id"
+    t.text "controller_class"
+    t.text "controller_method"
+    t.text "request_action"
+    t.text "request_url"
+    t.text "request_path"
+    t.text "request_parameters"
+    t.uuid "request_id"
+    t.text "ip"
+    t.text "remote_ip"
+    t.boolean "local"
+    t.text "user_agent"
+    t.text "device"
+    t.boolean "requests_mobile"
+    t.text "os"
+    t.text "os_version"
+    t.text "browser"
+    t.text "browser_version"
+    t.text "accepts_languages"
+    t.text "referer"
+    t.text "landing_page"
+    t.boolean "bot"
+    t.text "location"
+    t.text "safe_location"
+    t.text "country"
+    t.decimal "latitude"
+    t.decimal "longitude"
+    t.text "http_status"
+    t.text "format"
+    t.datetime "started_at"
+    t.datetime "created_at"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
   create_table "rmp_flamegraphs", force: :cascade do |t|
     t.bigint "rmp_profiled_request_id", null: false
     t.binary "data"
@@ -200,6 +235,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_225147) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "requests", "users"
   add_foreign_key "rmp_flamegraphs", "rmp_profiled_requests"
   add_foreign_key "rmp_traces", "rmp_profiled_requests"
 end
