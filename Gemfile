@@ -65,6 +65,9 @@ gem 'friendly_id'
 # Use Paper Trail to track and store changes to models
 gem 'paper_trail'
 
+# Use Devise to add user authentication
+gem 'devise'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
