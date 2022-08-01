@@ -5,6 +5,7 @@ class CreateRequests < ActiveRecord::Migration[7.0]
   def change
     create_table :requests, id: :uuid do |t|
       t.belongs_to :user, foreign_key: true, type: :uuid
+
       t.text :controller_class
       t.text :controller_method
       t.text :request_action

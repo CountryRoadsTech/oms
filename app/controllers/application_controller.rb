@@ -11,6 +11,12 @@ class ApplicationController < ActionController::Base
   # Enables pagination methods in controllers
   include Pagy::Backend
 
+  # Track and store which user (if signed in) performed each change to a model
+  before_action :set_paper_trail_whodunnit
+
+  # Store each request in the database
+  after_action :save_request
+
   # Add helper methods to store which page the user is on and display it to them
   helper_method :breadcrumbs
 
@@ -21,12 +27,6 @@ class ApplicationController < ActionController::Base
   def add_breadcrumb(name, url = nil)
     breadcrumbs << Breadcrumb.new(name, url)
   end
-
-  # Track and store which user (if signed in) performed each change to a model
-  before_action :set_paper_trail_whodunnit
-
-  # Store each request in the database.
-  after_action :save_request
 
   private
 
