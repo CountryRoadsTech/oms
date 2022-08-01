@@ -31,26 +31,26 @@ class ApplicationController < ActionController::Base
   private
 
   def save_request
-    Request.create!({ user: current_user,
-                      request_action: request.method,
-                      request_url: request.url,
-                      request_path: request.path,
-                      request_parameters: request.parameters.map(&:to_s).join(', '),
-                      ip: request.ip,
-                      remote_ip: request.remote_ip,
-                      local: request.local?,
-                      user_agent: request.user_agent,
-                      device: browser.device.name,
-                      requests_mobile: request.headers['Sec-CH-UA-Mobile'],
-                      os: browser.platform,
-                      os_version: browser.platform.version,
-                      browser: browser.name,
-                      browser_version: browser.full_version,
-                      accepts_languages: browser.accept_language.map(&:name).join(', '),
-                      referer: request.referer,
-                      landing_page: request.original_url,
-                      bot: browser.bot?,
-                      location: request.location,
-                      safe_location: request.safe_location })
+    r = Request.create!({ user: current_user,
+                          request_action: request.method,
+                          request_url: request.url,
+                          request_path: request.path,
+                          request_parameters: request.parameters.map(&:to_s).join(', '),
+                          ip: request.ip,
+                          remote_ip: request.remote_ip,
+                          local: request.local?,
+                          user_agent: request.user_agent,
+                          device: browser.device.name,
+                          requests_mobile: request.headers['Sec-CH-UA-Mobile'],
+                          os: browser.platform,
+                          os_version: browser.platform.version,
+                          browser: browser.name,
+                          browser_version: browser.full_version,
+                          accepts_languages: browser.accept_language.map(&:name).join(', '),
+                          referer: request.referer,
+                          landing_page: request.original_url,
+                          bot: browser.bot? })
+
+    GeocodeRequestJob.perform_later(r)
   end
 end
