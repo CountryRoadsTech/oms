@@ -40,4 +40,5 @@ class User < ApplicationRecord
   has_many :login_activities, as: :user, dependent: :nullify
   has_many :requests, dependent: :nullify
   has_many :pages, dependent: :nullify, inverse_of: :user
+  has_many :articles, dependent: :nullify, inverse_of: :user
 end

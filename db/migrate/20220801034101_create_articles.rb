@@ -14,5 +14,8 @@ class CreateArticles < ActiveRecord::Migration[7.0]
       t.datetime :archived_at
       t.timestamps
     end
+
+    add_index :articles, :title, unique: true
+    add_index :articles, :slug, unique: true
   end
 end

@@ -62,6 +62,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_034101) do
     t.datetime "archived_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true
+    t.index ["title"], name: "index_articles_on_title", unique: true
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 

@@ -10,19 +10,29 @@ class ArticlesController < ApplicationController
   end
 
   # GET /articles/1 or /articles/1.json
-  def show; end
+  def show
+    # Redirect to the latest URL for the record if an old slug was used
+    redirect_to @article, status: :moved_permanently if request.path != article_path(@article)
+  end
 
   # GET /articles/new
   def new
+    authenticate_user!
+
     @article = Article.new
   end
 
   # GET /articles/1/edit
-  def edit; end
+  def edit
+    authenticate_user!
+  end
 
   # POST /articles or /articles.json
   def create
+    authenticate_user!
+
     @article = Article.new(article_params)
+    @article.user = current_user
 
     respond_to do |format|
       if @article.save
@@ -37,6 +47,8 @@ class ArticlesController < ApplicationController
 
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
+    authenticate_user!
+
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to article_url(@article), notice: 'Article was successfully updated.' }
@@ -50,7 +62,9 @@ class ArticlesController < ApplicationController
 
   # DELETE /articles/1 or /articles/1.json
   def destroy
-    @article.destroy
+    authenticate_user!
+
+    @article.archive!
 
     respond_to do |format|
       format.html { redirect_to articles_url, notice: 'Article was successfully destroyed.' }
@@ -62,11 +76,14 @@ class ArticlesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_article
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    # Render the 404 page if the record cannot be found with the given slug
+    render file: Rails.public_path.join('404.html'), status: :not_found and return
   end
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:user_id, :title, :slug, :body, :external, :published_at, :archived_at)
+    params.require(:article).permit(:title, :body, :external, :published_at)
   end
 end

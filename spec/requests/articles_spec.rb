@@ -19,16 +19,16 @@ RSpec.describe '/articles', type: :request do
   # Article. As you add validations to Article, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) do
-    skip('Add a hash of attributes valid for your model')
+    attributes_for(:article)
   end
 
   let(:invalid_attributes) do
-    skip('Add a hash of attributes invalid for your model')
+    { foo: :bar, fiz: :bang }
   end
 
   describe 'GET /index' do
     it 'renders a successful response' do
-      Article.create! valid_attributes
+      create(:article)
       get articles_url
       expect(response).to be_successful
     end
@@ -36,7 +36,7 @@ RSpec.describe '/articles', type: :request do
 
   describe 'GET /show' do
     it 'renders a successful response' do
-      article = Article.create! valid_attributes
+      article = create(:article)
       get article_url(article)
       expect(response).to be_successful
     end
@@ -44,6 +44,9 @@ RSpec.describe '/articles', type: :request do
 
   describe 'GET /new' do
     it 'renders a successful response' do
+      user = create(:user)
+      sign_in user
+
       get new_article_url
       expect(response).to be_successful
     end
@@ -51,7 +54,10 @@ RSpec.describe '/articles', type: :request do
 
   describe 'GET /edit' do
     it 'renders a successful response' do
-      article = Article.create! valid_attributes
+      user = create(:user)
+      sign_in user
+
+      article = create(:article)
       get edit_article_url(article)
       expect(response).to be_successful
     end
@@ -60,12 +66,18 @@ RSpec.describe '/articles', type: :request do
   describe 'POST /create' do
     context 'with valid parameters' do
       it 'creates a new Article' do
+        user = create(:user)
+        sign_in user
+
         expect do
           post articles_url, params: { article: valid_attributes }
         end.to change(Article, :count).by(1)
       end
 
       it 'redirects to the created article' do
+        user = create(:user)
+        sign_in user
+
         post articles_url, params: { article: valid_attributes }
         expect(response).to redirect_to(article_url(Article.last))
       end
@@ -73,14 +85,20 @@ RSpec.describe '/articles', type: :request do
 
     context 'with invalid parameters' do
       it 'does not create a new Article' do
+        user = create(:user)
+        sign_in user
+
         expect do
           post articles_url, params: { article: invalid_attributes }
         end.not_to change(Article, :count)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it 'renders an unprocessable entity status' do
+        user = create(:user)
+        sign_in user
+
         post articles_url, params: { article: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
@@ -88,18 +106,24 @@ RSpec.describe '/articles', type: :request do
   describe 'PATCH /update' do
     context 'with valid parameters' do
       let(:new_attributes) do
-        skip('Add a hash of attributes valid for your model')
+        attributes_for(:article)
       end
 
       it 'updates the requested article' do
-        article = Article.create! valid_attributes
+        user = create(:user)
+        sign_in user
+
+        article = create(:article)
         patch article_url(article), params: { article: new_attributes }
         article.reload
         skip('Add assertions for updated state')
       end
 
       it 'redirects to the article' do
-        article = Article.create! valid_attributes
+        user = create(:user)
+        sign_in user
+
+        article = create(:article)
         patch article_url(article), params: { article: new_attributes }
         article.reload
         expect(response).to redirect_to(article_url(article))
@@ -107,24 +131,33 @@ RSpec.describe '/articles', type: :request do
     end
 
     context 'with invalid parameters' do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
-        article = Article.create! valid_attributes
+      it "renders a found response (i.e. to display the 'edit' template)" do
+        user = create(:user)
+        sign_in user
+
+        article = create(:article)
         patch article_url(article), params: { article: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(:found)
       end
     end
   end
 
   describe 'DELETE /destroy' do
     it 'destroys the requested article' do
-      article = Article.create! valid_attributes
+      user = create(:user)
+      sign_in user
+
+      article = create(:article)
       expect do
         delete article_url(article)
       end.to change(Article, :count).by(-1)
     end
 
     it 'redirects to the articles list' do
-      article = Article.create! valid_attributes
+      user = create(:user)
+      sign_in user
+
+      article = create(:article)
       delete article_url(article)
       expect(response).to redirect_to(articles_url)
     end
