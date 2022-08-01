@@ -31,14 +31,7 @@ class PagesController < ApplicationController
   def create
     authenticate_user!
 
-    if params.dig(:page, :published_at_date) || params.dig(:page, :published_at_time)
-      date = Time.zone.parse(params.dig(:page, :published_at_date))&.to_date
-      time = Time.zone.parse(params.dig(:page, :published_at_time))
-      # Remove the old, separate date and time keys
-      params[:page].extract!(:published_at_date, :published_at_time)
-      # Add the new, combined datetime key
-      params[:page][:published_at] = Time.zone.parse("#{date&.strftime('%F')} #{time&.strftime('%T')}")
-    end
+    save_published_at_datetime if params.dig(:page, :published_at_date) || params.dig(:page, :published_at_time)
 
     @page = Page.new(page_params)
     @page.user = current_user
@@ -57,6 +50,8 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1 or /pages/1.json
   def update
     authenticate_user!
+
+    save_published_at_datetime if params.dig(:page, :published_at_date) || params.dig(:page, :published_at_time)
 
     respond_to do |format|
       if @page.update(page_params)
@@ -93,6 +88,15 @@ class PagesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def page_params
-    params.require(:page).permit(:title, :subtitle, :body, :published_at)
+    params.require(:page).permit(:title, :subtitle, :body, :published_at, :published_at_date, :published_at_time)
+  end
+
+  def save_published_at_datetime
+    date = Time.zone.parse(params.dig(:page, :published_at_date))&.to_date
+    time = Time.zone.parse(params.dig(:page, :published_at_time))
+    # Remove the old, separate date and time keys
+    params[:page].extract!(:published_at_date, :published_at_time)
+    # Add the new, combined datetime key
+    params[:page][:published_at] = Time.zone.parse("#{date&.strftime('%F')} #{time&.strftime('%T')}")
   end
 end
