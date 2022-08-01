@@ -4,16 +4,14 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.association :user %>
-    <%= f.input :title %>
-    <%= f.input :slug %>
-    <%= f.input :subtitle %>
-    <%= f.input :body %>
-    <%= f.input :published_at %>
-    <%= f.input :archived_at %>
+    <%= f.input :title, hint: 'Provide a title for the page.' %>
+    <%= f.input :subtitle, hint: 'Provide an optiontal subtitle for the page.' %>
+    <%= f.input :body, as: :rich_text_area, hint: 'Provide the optional main body of the page. Embed files, links, and stylized text.' %>
+    <%= f.input :published_at_date, as: :date, html5: true, hint: "The date this page will become visible to the public. Leave both this and time blank to keep it private. Leave this blank but provide a time to default to today's date.", input_html: { value: '' } %>
+    <%= f.input :published_at_time, as: :time, html5: true, hint: "The time this page will become visible to the public. Leave both this and date blank to keep it private. Leave this blank but provide a date to default to midnight on the date.", input_html: { value: '' } %>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-actions mt-4">
+    <%= f.button :submit, class: 'btn-lg btn-primary' %>
   </div>
 <% end %>

@@ -46,5 +46,7 @@
 #  fk_rails_8ead8b1e6b  (user_id => users.id)
 #
 class Request < ApplicationRecord
+  self.implicit_order_column = 'created_at'
+
   belongs_to :user, inverse_of: :requests, optional: true
 end

@@ -37,6 +37,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :recoverable, :rememberable, :validatable,
          :confirmable, :lockable, :timeoutable, :trackable
 
+  self.implicit_order_column = 'created_at'
+
   has_many :login_activities, as: :user, dependent: :nullify
   has_many :requests, dependent: :nullify
   has_many :pages, dependent: :nullify, inverse_of: :user

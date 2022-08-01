@@ -31,5 +31,7 @@
 #  index_login_activities_on_user      (user_type,user_id)
 #
 class LoginActivity < ApplicationRecord
+  self.implicit_order_column = 'created_at'
+
   belongs_to :user, polymorphic: true, optional: true
 end

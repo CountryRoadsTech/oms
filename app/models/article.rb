@@ -25,6 +25,8 @@
 #  fk_rails_3d31dad1cc  (user_id => users.id)
 #
 class Article < ApplicationRecord
+  self.implicit_order_column = 'created_at'
+
   belongs_to :user, inverse_of: :articles
   has_rich_text :body
 

@@ -31,6 +31,15 @@ class PagesController < ApplicationController
   def create
     authenticate_user!
 
+    if params.dig(:page, :published_at_date) || params.dig(:page, :published_at_time)
+      date = Time.zone.parse(params.dig(:page, :published_at_date))&.to_date
+      time = Time.zone.parse(params.dig(:page, :published_at_time))
+      # Remove the old, separate date and time keys
+      params[:page].extract!(:published_at_date, :published_at_time)
+      # Add the new, combined datetime key
+      params[:page][:published_at] = Time.zone.parse("#{date&.strftime('%F')} #{time&.strftime('%T')}")
+    end
+
     @page = Page.new(page_params)
     @page.user = current_user
 
@@ -67,7 +76,7 @@ class PagesController < ApplicationController
     @page.archive!
 
     respond_to do |format|
-      format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
+      format.html { redirect_to pages_url, notice: 'Page was successfully archived.' }
       format.json { head :no_content }
     end
   end

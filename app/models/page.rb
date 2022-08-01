@@ -25,6 +25,8 @@
 #  fk_rails_84a58494eb  (user_id => users.id)
 #
 class Page < ApplicationRecord
+  self.implicit_order_column = 'created_at'
+
   belongs_to :user, inverse_of: :pages
   has_rich_text :body
 
