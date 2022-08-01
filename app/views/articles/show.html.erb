@@ -1,4 +1,7 @@
-<h1><%= @article.title %></h1>
+<h1><%= title @article.title %></h1>
+<% description @article.body.to_s %>
+<% keywords (@article.title.split(' ') + @article.body.to_s.split(' ')).join(', ') %>
+
 <p>By: <%= link_to @article.user.name, @article.user %></p>
 <% if current_user %>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">

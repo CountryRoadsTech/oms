@@ -1,4 +1,6 @@
-<h2>Sign In</h2>
+<h1><%= title 'Sign In' %></h1>
+<% description 'Sign in to your password.' %>
+<% keywords 'Signin, login, User, Account' %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
   <div class="form-inputs">

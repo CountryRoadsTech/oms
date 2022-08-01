@@ -1,4 +1,5 @@
-<h2>Resend Confirmation Instructions</h2>
+<h1><%= title 'Resend Confirmation Instructions' %></h1>
+<% set_meta_tags noindex: true %>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }, data: { turbo: false }) do |f| %>
   <%= f.error_notification %>

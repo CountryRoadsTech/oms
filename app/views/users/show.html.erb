@@ -1,3 +1,5 @@
-<h1>About <%= @user.name %></h1>
+<h1><%= title "About #{@user.name}" %></h1>
+<% description @user.profile.to_s %>
+<% keywords ([@user.name] + @user.profile.to_s.split(' ')).join(', ') %>
 
 <%= @user.profile %>
