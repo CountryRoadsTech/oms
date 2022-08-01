@@ -1,37 +1,9 @@
-<div id="<%= dom_id page %>">
-  <p>
-    <strong>User:</strong>
-    <%= page.user_id %>
-  </p>
-
-  <p>
-    <strong>Title:</strong>
-    <%= page.title %>
-  </p>
-
-  <p>
-    <strong>Slug:</strong>
-    <%= page.slug %>
-  </p>
-
-  <p>
-    <strong>Subtitle:</strong>
-    <%= page.subtitle %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= page.body %>
-  </p>
-
-  <p>
-    <strong>Published at:</strong>
-    <%= page.published_at %>
-  </p>
-
-  <p>
-    <strong>Archived at:</strong>
-    <%= page.archived_at %>
-  </p>
-
+<div id="<%= dom_id page %>" class="col">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= page.title %></h5>
+      <p class="card-text"><%= page.subtitle ? page.subtitle : page.body.to_s.truncate(160) %></p>
+      <%= link_to "Read Full Page", page, class: 'btn btn-outline-primary' %>
+    </div>
+  </div>
 </div>

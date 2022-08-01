@@ -1,12 +1,29 @@
-<h1>Pages</h1>
-
-<div id="pages">
-  <% @pages.each do |page| %>
-    <%= render page %>
-    <p>
-      <%= link_to "Show this page", page %>
-    </p>
-  <% end %>
+<div class="p-5 mb-4 bg-light border rounded-3">
+  <div class="container-fluid py-5">
+    <h1 class="display-5 fw-bold">Ottawa Food Rescue</h1>
+    <p class="col-md-8 fs-4">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+    <%= link_to 'Follow us on Facebook', 'https://www.facebook.com/OttawaFoodRescue/', class: 'btn btn-lg btn-primary', target: :_blank %>
+  </div>
 </div>
 
-<%= link_to "New page", new_page_path %>
+<div class="text-center">
+  <img src="<%= image_url('OttawaFoodRescue_Logo.png') %>" class="img-fluid">
+</div>
+
+<% if current_user %>
+  <h2>Authorized User Actions</h2>
+  <div class="d-grid gap-1 mb-4">
+    <%= link_to "Create New Page", new_page_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to "Create New Article", new_article_path, class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>
+
+<h2>All Pages</h2>
+
+<div id="pages">
+  <div class="row row-cols-1 row-cols-md-2 g-2">
+    <% @pages.each do |page| %>
+      <%= render page %>
+    <% end %>
+  </div>
+</div>
