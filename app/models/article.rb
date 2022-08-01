@@ -36,6 +36,10 @@ class Article < ApplicationRecord
   scope :only_internal, -> { where(external: false) }
   scope :only_external, -> { where(external: true) }
 
+  scope :published, -> { where('published_at <= ?', Time.current) }
+  scope :scheduled_for_publication, -> { where('published_at > ?', Time.current) }
+  scope :not_scheduled_for_publication, -> { where(published_at: nil) }
+
   has_paper_trail # Track and store changes to this model
 
   include Archivable # Enables soft deleting and restoring this model

@@ -6,7 +6,11 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = if current_user
+                  Article.all.with_archived
+                else
+                  Article.published
+                end
   end
 
   # GET /articles/1 or /articles/1.json
@@ -31,6 +35,8 @@ class ArticlesController < ApplicationController
   def create
     authenticate_user!
 
+    save_published_at_datetime if params.dig(:article, :published_at_date) || params.dig(:article, :published_at_time)
+
     @article = Article.new(article_params)
     @article.user = current_user
 
@@ -48,6 +54,8 @@ class ArticlesController < ApplicationController
   # PATCH/PUT /articles/1 or /articles/1.json
   def update
     authenticate_user!
+
+    save_published_at_datetime if params.dig(:article, :published_at_date) || params.dig(:article, :published_at_time)
 
     respond_to do |format|
       if @article.update(article_params)
@@ -76,7 +84,11 @@ class ArticlesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_article
-    @article = Article.friendly.find(params[:id])
+    @article = if current_user
+                 Article.with_archived.friendly.find(params[:id])
+               else
+                 Article.published.friendly.find(params[:id])
+               end
   rescue ActiveRecord::RecordNotFound
     # Render the 404 page if the record cannot be found with the given slug
     render file: Rails.public_path.join('404.html'), status: :not_found and return
@@ -84,6 +96,15 @@ class ArticlesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def article_params
-    params.require(:article).permit(:title, :body, :external, :published_at)
+    params.require(:article).permit(:title, :body, :external, :published_at, :published_at_date, :published_at_time)
+  end
+
+  def save_published_at_datetime
+    date = Time.zone.parse(params.dig(:article, :published_at_date))&.to_date
+    time = Time.zone.parse(params.dig(:article, :published_at_time))
+    # Remove the old, separate date and time keys
+    params[:article].extract!(:published_at_date, :published_at_time)
+    # Add the new, combined datetime key
+    params[:article][:published_at] = Time.zone.parse("#{date&.strftime('%F')} #{time&.strftime('%T')}")
   end
 end

@@ -29,5 +29,6 @@ FactoryBot.define do
     user
     title { Faker::Lorem.unique.sentence }
     body { Faker::Lorem.paragraphs(number: 5, supplemental: true).join("\n\n") }
+    published_at { 1.hour.ago }
   end
 end

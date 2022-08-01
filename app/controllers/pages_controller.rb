@@ -6,13 +6,17 @@ class PagesController < ApplicationController
 
   # GET /pages or /pages.json
   def index
-    @pages = Page.all
+    @pages = if current_user
+               Page.all.with_archived
+             else
+               Page.published
+             end
   end
 
   # GET /pages/1 or /pages/1.json
   def show
     # Redirect to the latest URL for the record if an old slug was used
-    redirect_to @page, status: :moved_permanently if request.path != page_path(@page)
+    # redirect_to @page, status: :moved_permanently if request.path != page_path(@page)
   end
 
   # GET /pages/new
@@ -80,7 +84,11 @@ class PagesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.friendly.find(params[:id])
+    @page = if current_user
+              Page.with_archived.friendly.find(params[:id])
+            else
+              Page.published.friendly.find(params[:id])
+            end
   rescue ActiveRecord::RecordNotFound
     # Render the 404 page if the record cannot be found with the given slug
     render file: Rails.public_path.join('404.html'), status: :not_found and return
