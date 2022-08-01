@@ -7,18 +7,24 @@
   <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-2">
     <% if @page.published_at %>
       <% if @page.published_at.past? %>
-        <div class="mt-2">This page is public! Published <%= local_time_ago(@page.published_at) %></div>
+        <div class="mt-2"><i class="bi bi-info-circle"></i> This page is public! Published <%= local_time_ago(@page.published_at) %></div>
       <% else %>
-        <div class="mt-2">This page will go public on <%= local_time(@page.published_at) %></div>
+        <div class="mt-2"><i class="bi bi-info-circle"></i> This page will go public on <%= local_time(@page.published_at) %></div>
       <% end %>
     <% else %>
-      <div class="mt-2">This page is not scheduled for publication</div>
+      <div class="mt-2"><i class="bi bi-info-circle"></i> This page is not scheduled for publication</div>
     <% end %>
-    <%= link_to "Edit", edit_page_path(@page), class: 'btn btn-primary' %>
-    <%= link_to "Archive", @page, 'data-turbo-method': :delete, class: 'btn btn-danger' %>
+    <%= link_to edit_page_path(@page), class: 'btn btn-primary' do %>
+      <i class="bi bi-pencil-square"></i> Edit
+    <% end %>
+    <%= link_to @page, 'data-turbo-method': :delete, class: 'btn btn-danger' do %>
+      <i class="bi bi-archive"></i> Archive
+    <% end %>
   </div>
 <% end %>
 
 <%= @page.body %>
 
-<%= link_to "Back", :back, class: 'btn btn-secondary mt-4' %>
+<%= link_to :back, class: 'btn btn-secondary text-white mt-4' do %>
+  <i class="bi bi-chevron-left"></i> Back
+<% end %>
