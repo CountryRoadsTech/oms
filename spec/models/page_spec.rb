@@ -16,6 +16,8 @@
 #
 # Indexes
 #
+#  index_pages_on_slug     (slug) UNIQUE
+#  index_pages_on_title    (title) UNIQUE
 #  index_pages_on_user_id  (user_id)
 #
 # Foreign Keys

@@ -14,5 +14,8 @@ class CreatePages < ActiveRecord::Migration[7.0]
       t.datetime :archived_at
       t.timestamps
     end
+
+    add_index :pages, :title, unique: true
+    add_index :pages, :slug, unique: true
   end
 end

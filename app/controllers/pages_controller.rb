@@ -61,7 +61,7 @@ class PagesController < ApplicationController
   def destroy
     authenticate_user!
 
-    @page.destroy
+    @page.archive!
 
     respond_to do |format|
       format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
@@ -73,7 +73,10 @@ class PagesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_page
-    @page = Page.find(params[:id])
+    @page = Page.friendly.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    # Render the 404 page if the record cannot be found with the given slug
+    render file: Rails.public_path.join('404.html'), status: :not_found and return
   end
 
   # Only allow a list of trusted parameters through.
