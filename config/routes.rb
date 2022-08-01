@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Creates RESTful routes
   resources :pages
 
+  # Enables viewing pages without needing to have pages/ first
+  get '/:id' => 'pages#show'
+
   # Adds user authentication routes
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
@@ -19,5 +22,5 @@ Rails.application.routes.draw do
   end
 
   # Defines the root path route ("/")
-  # root "articles#index"
+  root 'pages#index'
 end
