@@ -1,12 +1,18 @@
-<h1>News Articles</h1>
+<% if current_user %>
+  <h2>Authorized User Actions</h2>
+  <div class="d-grid gap-1 mb-4">
+    <%= link_to "Create New Page", new_page_path, class: 'btn btn-outline-secondary' %>
+    <%= link_to "Create New Article", new_article_path, class: 'btn btn-outline-secondary' %>
+  </div>
+<% end %>
+
+<h2>Newsfeed</h2>
+<p>News articles about Ottawa Food Rescue, and from around the community!</p>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+  <div class="row row-cols-1 row-cols-md-4 g-2">
+    <% @articles.each do |article| %>
+      <%= render article %>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New article", new_article_path %>

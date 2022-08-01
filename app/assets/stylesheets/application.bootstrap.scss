@@ -1,4 +1,9 @@
+$enable-shadows: true;
+$primary: #4b7310;
+$secondary: #00b1d2;
+
 @import 'bootstrap/scss/bootstrap';
 @import 'bootstrap-icons/font/bootstrap-icons';
+
 @import 'trix/dist/trix';
 @import 'actiontext.css';
