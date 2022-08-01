@@ -3,7 +3,7 @@
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   # Creates RESTful routes
-  resources :pages
+  resources :pages, :articles
 
   # Enables viewing pages without needing to have pages/ first
   get '/:id' => 'pages#show'
