@@ -3,7 +3,7 @@
     <div class="card-body">
       <h5 class="card-title"><%= page.title %></h5>
       <p class="card-text"><%= page.subtitle ? page.subtitle : page.body.to_s.truncate(160) %></p>
-      <%= link_to "Read Full Page", page, class: 'btn btn-outline-secondary' %>
+      <%= link_to "Read Page", page, class: 'btn btn-outline-secondary' %>
     </div>
   </div>
 </div>

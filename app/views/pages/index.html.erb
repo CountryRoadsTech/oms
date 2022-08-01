@@ -20,6 +20,18 @@
   </div>
 <% end %>
 
+<h2>Our Memebers</h2>
+
+<% if @users %>
+  <div id="users">
+    <div class="row row-cols-3 row-cols-md-6 g-2">
+      <% @users.each do |user| %>
+        <%= render user %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
 <h2>All Pages</h2>
 
 <div id="pages">

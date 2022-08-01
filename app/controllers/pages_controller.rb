@@ -11,6 +11,8 @@ class PagesController < ApplicationController
              else
                Page.published
              end
+
+    @users = User.all.includes([:rich_text_profile])
   end
 
   # GET /pages/1 or /pages/1.json

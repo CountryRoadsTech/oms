@@ -1,9 +1,9 @@
 <div id="<%= dom_id article %>" class="col">
-<div class="card border-primary">
+  <div class="card border-primary">
     <div class="card-body">
       <h5 class="card-title"><%= article.title %></h5>
-      <p class="card-text">By <%= article.user.email %></p>
-      <%= link_to "Read Full Article", article, class: 'btn btn-outline-secondary' %>
+      <p class="card-text">By <%= article.user.name %></p>
+      <%= link_to "Read Article", article, class: 'btn btn-outline-secondary' %>
     </div>
   </div>
 </div>

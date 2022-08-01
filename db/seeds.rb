@@ -8,14 +8,17 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-User.create!(email: 'richard@email.com', password: 'password', password_confirmation: 'password',
-             confirmed_at: Time.current)
+User.create!(email: 'richard@email.com', name: 'Richard Marting', password: 'password',
+             password_confirmation: 'password', confirmed_at: Time.current,
+             profile: 'I am Richard.')
 
-User.create!(email: 'collen@email.com', password: 'password', password_confirmation: 'password',
-             confirmed_at: Time.current)
+User.create!(email: 'collen@email.com', name: 'Coleen Person', password: 'password',
+             password_confirmation: 'password', confirmed_at: Time.current,
+             profile: 'I am C.')
 
-a = User.create!(email: 'addisonejmartin@gmail.com', password: 'password', password_confirmation: 'password',
-                 confirmed_at: Time.current)
+a = User.create!(email: 'addisonejmartin@gmail.com', name: 'Addison Martin', password: 'password',
+                 password_confirmation: 'password', confirmed_at: Time.current,
+                 profile: 'I am Addison.')
 
 Page.create!(user: a, title: 'About', subtitle: 'About our Organization', published_at: Time.current,
              body: 'We are Ottawa Food Rescue.')

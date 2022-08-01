@@ -18,10 +18,12 @@ require 'faker'
 #  last_sign_in_at        :datetime
 #  last_sign_in_ip        :string
 #  locked_at              :datetime
+#  name                   :text             not null
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
 #  sign_in_count          :integer          default(0), not null
+#  slug                   :text
 #  unconfirmed_email      :string
 #  unlock_token           :string
 #  created_at             :datetime         not null
@@ -31,12 +33,16 @@ require 'faker'
 #
 #  index_users_on_confirmation_token    (confirmation_token) UNIQUE
 #  index_users_on_email                 (email) UNIQUE
+#  index_users_on_name                  (name) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_slug                  (slug) UNIQUE
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 FactoryBot.define do
   factory :user do
     email { Faker::Internet.unique.email }
+    name { Faker::Name.unique.name }
+    profile { Faker::Lorem.paragraphs(number: 2, supplemental: true).join("\n\n") }
     password { Faker::Internet.password(min_length: 8, max_length: 128) }
     password_confirmation { password }
     confirmed_at { Time.current }

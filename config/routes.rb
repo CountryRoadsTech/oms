@@ -2,6 +2,7 @@
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  get 'users/show'
   # Creates RESTful routes
   resources :pages, :articles
 
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     unlocks: 'users/unlocks'
   }
+  resources :users, only: [:show]
 
   namespace :admin do
     mount RailsMiniProfiler::Engine => 'requests' if Rails.env.development?
