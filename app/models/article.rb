@@ -30,7 +30,7 @@ class Article < ApplicationRecord
   belongs_to :user, inverse_of: :articles
   has_rich_text :body
 
-  validates :title, presence: true
+  validates :title, :body, presence: true
   validates :title, uniqueness: true
 
   scope :only_internal, -> { where(external: false) }

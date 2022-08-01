@@ -30,7 +30,7 @@ class Page < ApplicationRecord
   belongs_to :user, inverse_of: :pages
   has_rich_text :body
 
-  validates :title, presence: true
+  validates :title, :body, presence: true
   validates :title, uniqueness: true
 
   scope :published, -> { where('published_at <= ?', Time.current) }
