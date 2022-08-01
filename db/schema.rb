@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_31_230409) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_014508) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -117,6 +117,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_230409) do
     t.index ["identity"], name: "index_login_activities_on_identity"
     t.index ["ip"], name: "index_login_activities_on_ip"
     t.index ["user_type", "user_id"], name: "index_login_activities_on_user"
+  end
+
+  create_table "pages", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "user_id", null: false
+    t.text "title", null: false
+    t.text "slug"
+    t.text "subtitle"
+    t.datetime "published_at"
+    t.datetime "archived_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_pages_on_user_id"
   end
 
   create_table "requests", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -235,6 +247,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_31_230409) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "pages", "users"
   add_foreign_key "requests", "users"
   add_foreign_key "rmp_flamegraphs", "rmp_profiled_requests"
   add_foreign_key "rmp_traces", "rmp_profiled_requests"

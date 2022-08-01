@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'faker'
+
 # == Schema Information
 #
 # Table name: users
@@ -33,8 +35,10 @@
 #  index_users_on_unlock_token          (unlock_token) UNIQUE
 #
 FactoryBot.define do
-  # rubocop:disable Lint/EmptyBlock
   factory :user do
+    email { Faker::Internet.unique.email }
+    password { Faker::Internet.password(min_length: 8, max_length: 128) }
+    password_confirmation { password }
+    confirmed_at { Time.current }
   end
-  # rubocop:enable Lint/EmptyBlock
 end

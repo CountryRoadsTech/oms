@@ -1,0 +1,19 @@
+
+<%= simple_form_for(@page) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.association :user %>
+    <%= f.input :title %>
+    <%= f.input :slug %>
+    <%= f.input :subtitle %>
+    <%= f.input :body %>
+    <%= f.input :published_at %>
+    <%= f.input :archived_at %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

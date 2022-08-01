@@ -2,6 +2,9 @@
 
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
+  # Creates RESTful routes
+  resources :pages
+
   # Adds user authentication routes
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
