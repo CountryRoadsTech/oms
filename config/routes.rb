@@ -12,10 +12,15 @@ Rails.application.routes.draw do
   # Adds user authentication routes
   devise_for :users, controllers: {
     confirmations: 'users/confirmations',
+    registrations: 'users/registrations',
     passwords: 'users/passwords',
     sessions: 'users/sessions',
     unlocks: 'users/unlocks'
   }
+  as :user do
+    get 'users/edit' => 'users/registrations#edit', :as => 'edit_user_registration'
+    patch 'users' => 'users/registrations#update', :as => 'user_registration'
+  end
   resources :users, only: [:show]
 
   namespace :admin do

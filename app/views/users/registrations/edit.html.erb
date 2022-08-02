@@ -1,7 +1,7 @@
 <h1><%= title "Edit #{resource_name.to_s.humanize.capitalize}"%></h1>
 <% set_meta_tags noindex: true %>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }, data: { turbo: false }) do |f| %>
+<%= simple_form_for(resource, as: resource_name, url: user_registration_path(), html: { method: :patch }, data: { turbo: false }) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -12,14 +12,16 @@
     <% end %>
 
     <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
+                hint: "Leave blank if you don't want to change your current password.",
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
     <%= f.input :password_confirmation,
                 required: false,
                 input_html: { autocomplete: "new-password" } %>
+    <%= f.input :name %>
+    <%= f.input :profile, as: :rich_text_area %>
     <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
+                hint: "We need your current password to confirm any changes.",
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
   </div>

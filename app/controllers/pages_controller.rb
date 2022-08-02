@@ -16,10 +16,7 @@ class PagesController < ApplicationController
   end
 
   # GET /pages/1 or /pages/1.json
-  def show
-    # Redirect to the latest URL for the record if an old slug was used
-    # redirect_to @page, status: :moved_permanently if request.path != page_path(@page)
-  end
+  def show; end
 
   # GET /pages/new
   def new
