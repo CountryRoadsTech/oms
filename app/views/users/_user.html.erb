@@ -1,9 +1,9 @@
 <div id="<%= dom_id user %>" class="col">
-    <div class="card border-primary">
+    <div class="card border-dark">
         <div class="card-body">
             <h5 class="card-title"><%= user.name %></h5>
             <p class="card-text"><%= user.profile.to_s.truncate(160) %></p>
-            <%= link_to "Read Profile", user, class: 'btn btn-outline-secondary' %>
+            <%= link_to "Read Profile", user, class: 'btn btn-outline-primary' %>
         </div>
     </div>
 </div>
