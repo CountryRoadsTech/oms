@@ -80,6 +80,9 @@ gem 'browser'
 # Use Meta Tags to help with Search Engine Optimization (seo)
 gem 'meta-tags'
 
+# Use Honeybadger to track errors and monitor production
+gem 'honeybadger', '~> 4.0'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
