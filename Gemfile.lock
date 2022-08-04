@@ -217,6 +217,7 @@ GEM
       net-protocol
       timeout
     net-ssh (7.0.1)
+    newrelic_rpm (8.9.0)
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
@@ -425,6 +426,7 @@ DEPENDENCIES
   jsbundling-rails
   local_time
   meta-tags
+  newrelic_rpm
   overcommit
   pagy
   paper_trail
