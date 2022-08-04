@@ -141,7 +141,7 @@ group :development do
   gem 'capistrano', require: false
   gem 'capistrano-rails', require: false
   gem 'capistrano-rbenv', require: false
-  gem 'capistrano-nginx', require: false
+  gem 'capistrano-passenger', require: false
   gem 'capistrano-deploytags', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-db-tasks', require: false

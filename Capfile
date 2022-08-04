@@ -21,6 +21,7 @@ install_plugin Capistrano::SCM::Git
 #
 require 'capistrano/rbenv'
 require 'capistrano/rails'
+require 'capistrano/passenger'
 require 'capistrano/rails/console'
 require 'capistrano-db-tasks'
 require 'capistrano/deploytags'
