@@ -85,6 +85,4 @@ test:
 #
 production:
   <<: *default
-  database: oms_production
-  username: oms
-  password: <%= ENV["OMS_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

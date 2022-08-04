@@ -136,4 +136,16 @@ group :development do
 
   # Overcommit is used to run checks before each 'git commit' and 'git push'
   gem 'overcommit'
+
+  # Use Capistrano to deploy to production server
+  gem 'capistrano', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rbenv', require: false
+  gem 'capistrano-nginx', require: false
+  gem 'capistrano-deploytags', require: false
+  gem 'capistrano-rails-console', require: false
+  gem 'capistrano-db-tasks', require: false
+  # Required by Capistrano
+  gem 'ed25519', '>= 1.2', '< 2.0'
+  gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
 end
