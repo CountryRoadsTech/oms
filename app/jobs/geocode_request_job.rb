@@ -15,9 +15,9 @@ class GeocodeRequestJob < ApplicationJob
     request.longitude = results.first.coordinates.second
     request.save!
 
-    # Check in with Honeybadger to let it know the job queue is still up and running jobs..
     return unless Rails.env.production?
 
+    # Check in with Honeybadger to let it know the job queue is still up and running jobs..
     uri = URI.parse(Rails.application.credentials.honeybadger.sidekiq_checkin_url)
     Net::HTTP.get_response(uri)
   end
