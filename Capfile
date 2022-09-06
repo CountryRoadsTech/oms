@@ -32,3 +32,4 @@ require 'capistrano/honeybadger'
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
 
 install_plugin Capistrano::Sidekiq
+install_plugin Capistrano::Sidekiq::Systemd

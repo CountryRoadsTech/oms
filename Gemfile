@@ -148,7 +148,7 @@ group :development do
   gem 'capistrano-deploytags', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-db-tasks', require: false
-  gem 'capistrano-sidekiq', require: false
+  gem 'capistrano-sidekiq'
   # Required by Capistrano
   gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
