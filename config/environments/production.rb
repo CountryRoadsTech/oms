@@ -66,6 +66,8 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.default_url_options = { host: 'ottawafoodrescue.ca' }
+
   config.action_mailer.smtp_settings = {
     address: Rails.application.credentials.smtp.host,
     port: Rails.application.credentials.smtp.port,
