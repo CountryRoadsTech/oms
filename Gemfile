@@ -47,8 +47,8 @@ gem 'sassc-rails'
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem 'image_processing', '~> 1.2'
 
-# Use Good Job to process background jobs asynchronously
-gem 'good_job'
+# Use Sidekiq to process background jobs asynchronously
+gem 'sidekiq'
 
 # Use Simple Form to simplify creating forms
 gem 'simple_form'
@@ -148,6 +148,7 @@ group :development do
   gem 'capistrano-deploytags', require: false
   gem 'capistrano-rails-console', require: false
   gem 'capistrano-db-tasks', require: false
+  gem 'capistrano-sidekiq', require: false
   # Required by Capistrano
   gem 'ed25519', '>= 1.2', '< 2.0'
   gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'

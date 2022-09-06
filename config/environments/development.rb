@@ -83,7 +83,4 @@ Rails.application.configure do
   end
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-
-  # Run Good Job in a seperate foreman process, see Procfile.dev
-  config.good_job.execution_mode = :external
 end

@@ -22,6 +22,7 @@ install_plugin Capistrano::SCM::Git
 require 'capistrano/rbenv'
 require 'capistrano/rails'
 require 'capistrano/passenger'
+require 'capistrano/sidekiq'
 require 'capistrano/rails/console'
 require 'capistrano-db-tasks'
 require 'capistrano/deploytags'
@@ -29,3 +30,6 @@ require 'capistrano/honeybadger'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined
 Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+
+install_plugin Capistrano::Sidekiq
+install_plugin Capistrano::Sidekiq::Systemd

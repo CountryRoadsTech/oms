@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'sidekiq/web'
+
 # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
   get 'users/show'
@@ -25,7 +27,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     mount RailsMiniProfiler::Engine => 'requests' if Rails.env.development?
-    mount GoodJob::Engine => 'background_jobs' if Rails.env.development?
+    mount Sidekiq::Web => 'background_jobs' if Rails.env.development?
   end
 
   # Defines the root path route ("/")

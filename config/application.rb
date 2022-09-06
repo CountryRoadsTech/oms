@@ -34,7 +34,7 @@ module Oms
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    # Use Good Job to process background jobs
-    config.active_job.queue_adapter = :good_job
+    # Use Sidekiq to process background jobs
+    config.active_job.queue_adapter = :sidekiq
   end
 end
