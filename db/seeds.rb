@@ -13,21 +13,21 @@ User.create!(email: Rails.application.credentials.seed_data.richard.email,
              password: Rails.application.credentials.seed_data.richard.password,
              password_confirmation: Rails.application.credentials.seed_data.richard.password,
              confirmed_at: Time.current,
-             profile: 'I am Richard. Please update me!')
+             profile: 'I am Richard.')
 
 User.create!(email: Rails.application.credentials.seed_data.coleen.email,
              name: 'Coleen L',
              password: Rails.application.credentials.seed_data.coleen.password,
              password_confirmation: Rails.application.credentials.seed_data.coleen.password,
              confirmed_at: Time.current,
-             profile: 'I am Coleen. Please update me!')
+             profile: 'I am Coleen.')
 
 a = User.create!(email: Rails.application.credentials.seed_data.addison.email,
                  name: 'Addison M',
                  password: Rails.application.credentials.seed_data.addison.password,
                  password_confirmation: Rails.application.credentials.seed_data.addison.password,
                  confirmed_at: Time.current,
-                 profile: 'I am Addison. Please update me!')
+                 profile: 'I am Addison.')
 
 Page.create!(user: a, title: 'About', subtitle: 'About our Organization', published_at: Time.current,
              body: "Addressing food insecurity by working with donors, volunteers, and local charities \
