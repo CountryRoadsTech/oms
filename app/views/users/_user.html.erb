@@ -2,7 +2,7 @@
     <div class="card bg-light border border-dark rounded-3">
         <div class="card-body">
             <h5 class="card-title"><%= user.name %></h5>
-            <p class="card-text"><%= user.profile.to_s.truncate(160) %></p>
+            <p class="card-text"><%= user.profile.to_plain_text.truncate(160) %></p>
             <%= link_to "Read Profile", user, class: 'btn btn-outline-primary' %>
         </div>
     </div>
