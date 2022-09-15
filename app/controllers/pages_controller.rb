@@ -12,7 +12,7 @@ class PagesController < ApplicationController
                Page.published
              end
 
-    @users = User.all.includes([:rich_text_profile])
+    @users = User.all.includes([:rich_text_profile]).order(:created_at)
   end
 
   # GET /pages/1 or /pages/1.json
