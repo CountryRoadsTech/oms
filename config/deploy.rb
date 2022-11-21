@@ -24,8 +24,8 @@ set :deploytag_utc, false
 
 set :migration_role, :app
 
-set :keep_releases, 3
-set :keep_assets, 3
+set :keep_releases, 1
+set :keep_assets, 1
 
 # Disable db:console push actions
 set :disallow_pushing, true
