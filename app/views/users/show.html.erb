@@ -2,7 +2,7 @@
 <% description @user.profile.to_s %>
 <% keywords ([@user.name] + @user.profile.to_s.split(' ')).join(', ') %>
 
-<% if @user.name == 'Richard M' %>
+<% if @user.name == 'Richard Martin' %>
   <%= image_tag '/profile_photo2.jpg', class: 'mx-auto d-block img-thumbnail rounded-circle col-5 md:col-3' %>
 <% elsif @user.name == 'Coleen Lawrence' %>
   <%= image_tag '/profile_photo1.jpg', class: 'mx-auto d-block img-thumbnail rounded-circle col-5 md:col-3' %>
