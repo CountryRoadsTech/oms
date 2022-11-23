@@ -2,6 +2,14 @@
 <% description @user.profile.to_s %>
 <% keywords ([@user.name] + @user.profile.to_s.split(' ')).join(', ') %>
 
+<% if @user.name == 'Richard Martin' %>
+  <%= image_tag '/profile_photo2.jpg', class: 'img-thumbnail rounded-circle col-3' %>
+<% elsif @user.name == 'Coleen Lawrence' %>
+  <%= image_tag '/profile_photo1.jpg', class: 'img-thumbnail rounded-circle col-3' %>
+<% elsif @user.name == 'Addison Martin' %>
+  <%= image_tag '/profile_photo3.jpg', class: 'img-thumbnail rounded-circle col-3' %>
+<% end %>
+
 <%= @user.profile %>
 
 <% if current_user&.id == @user.id %>

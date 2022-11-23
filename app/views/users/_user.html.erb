@@ -1,5 +1,12 @@
 <div id="<%= dom_id user %>" class="col">
     <div class="card bg-light border border-dark rounded-3">
+        <% if user.name == 'Richard Martin' %>
+            <%= image_tag '/profile_photo2.jpg', class: 'card-img-top' %>
+        <% elsif user.name == 'Coleen Lawrence' %>
+            <%= image_tag '/profile_photo1.jpg', class: 'card-img-top' %>
+        <% elsif user.name == 'Addison Martin' %>
+            <%= image_tag '/profile_photo3.jpg', class: 'card-img-top' %>
+        <% end %>
         <div class="card-body">
             <h5 class="card-title"><%= user.name %></h5>
             <p class="card-text"><%= user.profile.to_plain_text.truncate(160) %></p>
