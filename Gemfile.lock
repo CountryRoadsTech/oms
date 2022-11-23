@@ -261,8 +261,6 @@ GEM
     rainbow (3.1.1)
     rake (13.0.6)
     redis (4.8.0)
-    redis-client (0.11.2)
-      connection_pool
     regexp_parser (2.6.1)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -331,11 +329,10 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (5.2.0)
       activesupport (>= 5.2.0)
-    sidekiq (7.0.1)
-      concurrent-ruby (< 2)
-      connection_pool (>= 2.3.0)
-      rack (>= 2.2.4)
-      redis-client (>= 0.9.0)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
+      rack (~> 2.0)
+      redis (>= 4.5.0, < 5)
     simple_form (5.1.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -433,7 +430,7 @@ DEPENDENCIES
   sassc-rails
   selenium-webdriver
   shoulda-matchers
-  sidekiq
+  sidekiq (~> 6.5)
   simple_form
   sprockets-rails
   stackprof

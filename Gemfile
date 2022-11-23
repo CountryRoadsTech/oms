@@ -48,7 +48,7 @@ gem 'sassc-rails'
 gem 'image_processing', '~> 1.2'
 
 # Use Sidekiq to process background jobs asynchronously
-gem 'sidekiq'
+gem 'sidekiq', '~> 6.5'
 
 # Use Simple Form to simplify creating forms
 gem 'simple_form'
