@@ -39,7 +39,7 @@ Page.create!(user: a, title: 'About', subtitle: 'About our Organization', publis
             Do you have a passion for community giving and helping the vulnerable? Make a large scale food \
             donation. Drive for OFR. Share other ways you might assist.")
 
-Page.create!(user: a, title: 'Donate', subtitle: 'How to Help our Community', published_at: Time.current,
+Page.create!(user: a, title: 'Outreach', subtitle: 'How to Help our Community', published_at: Time.current,
              body: "Ottawa Food Rescue (OFR) works closely with Whole Foods Market to regular transport \
              quality surplus food to the following outreach programs: St Luke's Table: Provides a \
              supportive environment where visitors can maintain and improve their personal and \
