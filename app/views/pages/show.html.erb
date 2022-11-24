@@ -28,7 +28,20 @@
   </div>
 <% end %>
 
-<%= @page.body %>
+<% if @page.title == 'In Action' %>
+  <%= image_tag '/site_photo1.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+  <%= image_tag '/site_photo2.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+  <p class='pt-4'>Team members Julie and Coleen delivering recipients their meal kits. These kits are coupled with online cooking and nutrition lessons.</p>
+  <hr>
+  <%= image_tag '/site_photo3.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+  <p class='pt-4'>Team members Richard and Graham on our weekly Ottawa Mission donation drop-off.</p>
+  <hr>
+  <%= image_tag '/site_photo4.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+  <%= image_tag '/site_photo5.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+  <p class='pt-4'>Team members Dan, Richard, and Terry on a typical donation load-up. Generous portions of of produce, dairy, breads, desserts, and more, headed out to community food programs.</p>
+<% else %>
+  <%= @page.body %>
+<% end %>
 
 <%= link_to :back, class: 'btn btn-outline-primary mt-4' do %>
   <i class="bi bi-chevron-left"></i> Back
