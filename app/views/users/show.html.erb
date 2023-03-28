@@ -1,16 +1,26 @@
-<h1><%= title "About #{@user.name}" %></h1>
+<% title "About #{@user.name}" %>
 <% description @user.profile.to_s %>
 <% keywords ([@user.name] + @user.profile.to_s.split(' ')).join(', ') %>
 
-<% if @user.name == 'Richard Martin' %>
-  <%= image_tag '/profile_photo2.jpg', class: 'mx-auto d-block img-thumbnail rounded-circle col-5 md:col-3' %>
-<% elsif @user.name == 'Coleen Lawrence' %>
-  <%= image_tag '/profile_photo1.jpg', class: 'mx-auto d-block img-thumbnail rounded-circle col-5 md:col-3' %>
-<% elsif @user.name == 'Addison Martin' %>
-  <%= image_tag '/profile_photo3.jpg', class: 'mx-auto d-block img-thumbnail rounded-circle col-5 md:col-3' %>
-<% end %>
-
-<%= @user.profile %>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <% if @user.name == 'Richard Martin' %>
+        <%= image_tag '/profile_photo2.jpg', class: "img-fluid rounded-start" %>
+      <% elsif @user.name == 'Coleen Lawrence' %>
+        <%= image_tag '/profile_photo1.jpg', class: "img-fluid rounded-start" %>
+      <% elsif @user.name == 'Addison Martin' %>
+        <%= image_tag '/profile_photo3.jpg', class: "img-fluid rounded-start" %>
+      <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= @user.name %></h5>
+        <p class="card-text"><%= @user.profile %></p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <% if current_user&.id == @user.id %>
   <%= link_to edit_user_registration_path, class: 'btn btn-outline-primary mt-4' do %>
