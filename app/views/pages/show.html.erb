@@ -1,6 +1,6 @@
-<h1><%= title @page.title %></h1>
+<h1 class="text-center"><%= title @page.title %></h1>
 <% if @page.subtitle %>
-  <h3><%= @page.subtitle %></h3>
+  <h3 class="text-center"><%= @page.subtitle %></h3>
   <% description @page.subtitle %>
   <% keywords (@page.subtitle.split(' ') + @page.body.to_s.split(' ')).join(', ') %>
 <% else %>
