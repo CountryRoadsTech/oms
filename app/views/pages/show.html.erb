@@ -33,44 +33,183 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-        <%= image_tag '/site_photo18.png', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Fully loaded with donations headed out to inner-city programs in need.</p>
+
+        <div id="carouselExampleCaptions" class="carousel slide">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+
+            <div class="carousel-item active">
+              <%= image_tag '/site_photo4.jpg', class: 'd-block w-100 img-thumbnail' %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Team member Dan makes loading donations look easy!</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag '/site_photo7.jpg', class: 'd-block w-100 img-thumbnail' %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Team member Coleen and Megan Aubin of <a href="https://www.facebook.com/OttawaCommunityFoodPartnership?__tn__=-%5dK*F">Ottawa Community Food Partnership</a> loading up donations.</h5>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <%= image_tag '/site_photo11.jpg', class: 'd-block w-100 img-thumbnail' %>
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Our donation drop-off weighed a little more this day! Team members Erling and Richard dropped off dairy, produce, and filling cabinets to our inner-city program recipient.</h5>
+              </div>
+            </div>
+
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+
         <hr>
-        <%= image_tag '/site_photo1.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team members Julie and Coleen working with Parkdale Food Centre delivering participants their meal kits. These kits are coupled with online cooking and nutrition lessons.</p>
-        <hr>
-        <%= image_tag '/site_photo3.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team members Richard and Graham on our weekly Ottawa Mission donation drop-off.</p>
-        <hr>
-        <%= image_tag '/site_photo4.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Dan makes loading donations look easy!</p>
-        <hr>
-        <%= image_tag '/site_photo9.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <%= image_tag '/site_photo8.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Graham packing up donations on one end, and team member Erling stocking up the community fridge at the other end.</p>
-        <hr>
-        <%= image_tag '/site_photo11.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Our donation drop-off weighed a little more this day! Team members Erling and Richard dropped off dairy, produce, and filling cabinets to our inner-city program recipient.</p>
-        <hr>
-        <%= image_tag '/site_photo12.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <%= image_tag '/site_photo13.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Terry manging a large donation heading to shelters.</p>
-        <hr>
-        <%= image_tag '/site_photo7.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Coleen and Megan Aubin of <a href="https://www.facebook.com/OttawaCommunityFoodPartnership?__tn__=-%5dK*F">Ottawa Community Food Partnership</a> loading up donations.</p>
-        <hr>
-        <%= image_tag '/site_photo2.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'> Team member Julie on a donation drop-off for recipients of the <a href="https://www.facebook.com/parkdalefood/?__cft__%5b0%5d=AZXBHsJuoaM6C2kNISYGkyzQQYq3rvBYzohxToQgjOf4QJZ3pXzq5gfoxmbAzVFOrEXHlE3JRvxXKEOSKPGuDwxGY9r-mLADKkBubrLDJhVKdd4sFy8AYPxWB1Vqo29kVtdMn5w7kBehnJ4f3OnMwKST-TjFj7xh6Kb8bNrlaMJDdMAg0mlgwh2hcLVWXC_E7zA&__tn__=kK-R">Parkdale Food Centre</a> online cooking class. The centre provides fresh, wholesome food to people in need, as well as teaching them how to cook healthy, delicious meals with simple ingredients.</p>
-        <hr>
-        <%= image_tag '/site_photo10.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Coleen coordinating dispatch for our drivers on the road with food donations!</p>
-        <hr>
-        <%= image_tag '/site_photo15.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <%= image_tag '/site_photo16.png', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Team member Richard doing double duty rescuing food and delivering decorative iteams to a refugee family.</p>
-        <hr>
-        <%= image_tag '/site_photo17.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
-        <p class='pt-4'>Sundays we stock the community fridge with fresh fruits, vegtables, cheeses, yogurt, breads, beverages, and ready-to-go packaged meals!</p>
+
+        <div id="carouselExampleCaptions2" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <%= image_tag '/site_photo12.jpg', class: 'd-block w-100 img-thumbnail' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Team member Terry manging a large donation heading to the shelters.</h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag '/site_photo14.jpg', class: 'd-block w-100 img-thumbnail' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Team member Julie on a donation drop-off for recipients of the <a href="https://www.facebook.com/parkdalefood/?__cft__%5b0%5d=AZXBHsJuoaM6C2kNISYGkyzQQYq3rvBYzohxToQgjOf4QJZ3pXzq5gfoxmbAzVFOrEXHlE3JRvxXKEOSKPGuDwxGY9r-mLADKkBubrLDJhVKdd4sFy8AYPxWB1Vqo29kVtdMn5w7kBehnJ4f3OnMwKST-TjFj7xh6Kb8bNrlaMJDdMAg0mlgwh2hcLVWXC_E7zA&__tn__=kK-R">Parkdale Food Centre</a> online cooking class. The centre provides fresh, wholesome food to people in need, as well as teaching them how to cook healthy, delicious meals with simple ingredients.</h5>
+            </div>
+          </div>
+          
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions2" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <hr>
+
+      <div id="carouselExampleCaptions3" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+
+          <div class="carousel-item active">
+            <%= image_tag '/site_photo17.jpg', class: 'd-block w-100 img-thumbnail' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Sundays we stock the community fridge with fresh fruits, vegtables, cheeses, yogurt, breads, beverages, and ready-to-go packaged meals!</h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag '/site_photo8.jpg', class: 'd-block w-100 img-thumbnail' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Team member Graham packing up donations on one end of a donation run.</h5>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <%= image_tag '/site_photo9.jpg', class: 'd-block w-100 img-thumbnail' %>
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Team member Erling stocking up the community fridge at the other end of the donation run.</h5>
+            </div>
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions3" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+      <hr>
+
+      <div id="carouselExampleCaptions4" class="carousel slide">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+      <div class="carousel-inner">
+
+        <div class="carousel-item active">
+          <%= image_tag '/site_photo15.jpg', class: 'd-block w-100 img-thumbnail' %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Team member Richard rescuing food.</h5>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <%= image_tag '/site_photo16.jpg', class: 'd-block w-100 img-thumbnail' %>
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Team member Richard delivering decorative iteams to a refugee family.</h5>
+          </div>
+        </div>
+
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions4" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+
+    <hr>
+
+    <div id="carouselExampleCaptions5" class="carousel slide">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    </div>
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <%= image_tag '/site_photo10.jpg', class: 'd-block w-100 img-thumbnail' %>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Team member Coleen coordinating dispatch for our drivers on the road with food donations!</h5>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag '/site_photo18.jpg', class: 'd-block w-100 img-thumbnail' %>
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Fully loaded with donations headed out to inner-city programs in need.</h5>
+        </div>
+      </div>
+    </div>
+      
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions5" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
         </div>
       </div>
     </div>
@@ -79,7 +218,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-8 offset-md-2">
-          <%= image_tag '/site_photo18.png', class: 'img-fluid img-thumbnail mx-auto d-block' %>
+          <%= image_tag '/site_photo18.jpg', class: 'img-fluid img-thumbnail mx-auto d-block' %>
           <br>
           <%= @page.body %>
         </div>
